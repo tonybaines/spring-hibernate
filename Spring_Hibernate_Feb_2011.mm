@@ -16,8 +16,7 @@
       Feb 2011
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge COLOR="#111111" WIDTH="thin"/>
 <node CREATED="1296375806000" ID="ID_1661218189" MODIFIED="1296375823068" POSITION="right" TEXT="Prelude">
 <node CREATED="1296375825460" ID="ID_817216500" MODIFIED="1296375897138" TEXT="IoC / DI">
@@ -84,6 +83,8 @@
 <node CREATED="1296375984437" ID="ID_1495436665" LINK="http://static.springsource.org/spring/docs/3.0.x/reference/new-in-3.html" MODIFIED="1296376086259" TEXT="What&apos;s New"/>
 <node CREATED="1296376088392" ID="ID_1752180059" LINK="http://static.springsource.org/spring/docs/3.0.x/reference/expressions.html" MODIFIED="1296376107950" TEXT="SpringEL"/>
 <node CREATED="1296378037332" ID="ID_1810914593" LINK="http://www.miranda.org/~jkominek/rot13/java/" MODIFIED="1296378044176" TEXT="ROT-13 Java"/>
+<node CREATED="1296378517955" ID="ID_1580848359" LINK="https://addons.mozilla.org/en-us/firefox/addon/restclient/" MODIFIED="1296378534237" TEXT="Firefox REST client"/>
+<node CREATED="1296378535493" ID="ID_127995214" LINK="http://code.google.com/p/rest-client/" MODIFIED="1296378565577" TEXT="REST Client"/>
 </node>
 <node COLOR="#111111" CREATED="1296375535201" ID="ID_781347250" MODIFIED="1296375682369" POSITION="left" TEXT="Data Model">
 <edge COLOR="#111111" WIDTH="thin"/>
