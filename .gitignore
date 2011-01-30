@@ -1,1 +1,7 @@
+.classpath
 .gradle/
+.project
+.settings/
+spring-hibernate.iml
+spring-hibernate.ipr
+spring-hibernate.iws
