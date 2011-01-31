@@ -1,9 +1,11 @@
 apply plugin: 'java'
+apply plugin: 'jetty'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 
 springVersion='3.0.5.RELEASE'
+hibernateVersion='3.3.2.GA'
 
 repositories {
     mavenCentral()
@@ -12,9 +14,10 @@ repositories {
 dependencies {
   compile "org.springframework:spring-context:$springVersion",
           "org.springframework:spring-tx:$springVersion",
+          "org.springframework:spring-webmvc:$springVersion",
           "org.springframework:spring-orm:$springVersion"
 
-  compile 'org.hibernate:hibernate-core:3.3.2.GA'
+  compile "org.hibernate:hibernate-core:$hibernateVersion"
 }
 
 
