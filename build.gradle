@@ -20,6 +20,8 @@ dependencies {
           "org.springframework:spring-orm:$springVersion"
 
   compile "org.hibernate:hibernate-core:$hibernateVersion"
+  runtime "org.codehaus.jackson:jackson-core-asl:1.2.1",
+          "org.codehaus.jackson:jackson-mapper-asl:1.2.1"
 }
 
 
