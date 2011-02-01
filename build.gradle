@@ -8,6 +8,8 @@ springVersion='3.0.5.RELEASE'
 hibernateVersion='3.3.2.GA'
 
 repositories {
+    flatDir name: 'localRepository', dirs: 'lib'
+    mavenRepo urls: "https://collaborate.bt.com/artefacts/content/groups/public"
     mavenCentral()
 }
 
@@ -22,6 +24,6 @@ dependencies {
 
 
 task copyToLib(type: Copy) {
-    into "$buildDir/output/lib"
+    into "lib"
     from configurations.runtime
 }
