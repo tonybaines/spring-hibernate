@@ -1,1 +1,25 @@
 Material for a session on Spring and Hibernate presented Feb 2011
+
+
+Bookstore
+
+Author
++id
++name
++[books]
+
+Book
++id
++title
++author
++price
+
+Basket
++id
++[items]
++total
+
+Item
++id
++basket
++book
