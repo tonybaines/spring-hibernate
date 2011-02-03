@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,8 +41,7 @@ public class BookController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = { "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void putBook(@PathVariable("id") long id, @Valid Book book, BindingResult result,
-      HttpServletResponse response) throws BindException {
+	public void putBook(@PathVariable("id") long id, @Valid @RequestBody Book book, BindingResult result) throws BindException {
 		System.out.println("PUT a book " + book);
     if (result.hasErrors()) {
       throw new BindException(result);
@@ -57,7 +57,7 @@ public class BookController {
 	@RequestMapping(method = RequestMethod.POST, headers = { "Accept=application/json", "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
-	Book createBook(@Valid Book book, BindingResult result,
+	Book createBook(@Valid @RequestBody Book book, BindingResult result,
 			HttpServletResponse response) throws BindException {
 		System.out.println("POST a book" + book);
 		if (result.hasErrors()) {
