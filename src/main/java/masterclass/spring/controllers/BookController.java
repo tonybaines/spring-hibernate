@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import masterclass.spring.domain.Book;
 import masterclass.spring.service.BookService;
@@ -30,17 +31,21 @@ public class BookController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = { "Accept=application/json" })
 	public @ResponseBody
-	Map getBook(@PathVariable("id") long id) {
+	Book getBook(@PathVariable("id") long id) {
 		System.out.println("GET a book");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("Greeting", "Hello world");
-		return map;
+		Book book = new Book();
+		book.setTitle("Design Patterns");
+		return book;
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = { "Accept=application/json" })
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = { "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void putBook(@PathVariable("id") long id, Book book) {
-		System.out.println("PUT a book");
+	public void putBook(@PathVariable("id") long id, @Valid Book book, BindingResult result,
+      HttpServletResponse response) throws BindException {
+		System.out.println("PUT a book " + book);
+    if (result.hasErrors()) {
+      throw new BindException(result);
+    }
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -49,16 +54,16 @@ public class BookController {
 		System.out.println("DELETE a book");
 	}
 
-	@RequestMapping(method = RequestMethod.POST, headers = { "Accept=application/json" })
+	@RequestMapping(method = RequestMethod.POST, headers = { "Accept=application/json", "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
-	Book createBook(Book book, BindingResult result,
+	Book createBook(@Valid Book book, BindingResult result,
 			HttpServletResponse response) throws BindException {
 		System.out.println("POST a book" + book);
 		if (result.hasErrors()) {
 			throw new BindException(result);
 		}
-		// Do save here
+
 		Book createdBook = bookService.createBook(book);
 		
 		response.setHeader("Location", "/books/" + createdBook.getId());

@@ -3,6 +3,7 @@ apply plugin: 'jetty'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+sourceCompatibility=1.6
 
 springVersion='3.0.5.RELEASE'
 hibernateVersion='3.3.2.GA'
@@ -21,10 +22,12 @@ dependencies {
           "org.springframework:spring-jdbc:$springVersion"
 
   compile "org.hibernate:hibernate-core:$hibernateVersion",
-  		  "org.hibernate:hibernate-entitymanager:$hibernateVersion",
-  		  "commons-dbcp:commons-dbcp:1.2",
-  		  "org.slf4j:slf4j-simple:1.4.2",
-  		  "hsqldb:hsqldb:1.8.0.7"
+  		    "org.hibernate:hibernate-entitymanager:$hibernateVersion",
+          "org.hibernate:hibernate-validator:4.0.2.GA",
+          "org.hibernate:ejb3-persistence:1.0.2.GA",
+  		    "commons-dbcp:commons-dbcp:1.2",
+  		    "org.slf4j:slf4j-simple:1.4.2",
+  		    "hsqldb:hsqldb:1.8.0.7"
   		  
   compile "org.mortbay.jetty:servlet-api-2.5:6.1.9"
   compile "org.codehaus.jackson:jackson-core-asl:1.2.1",
