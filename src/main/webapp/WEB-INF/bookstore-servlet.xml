@@ -9,4 +9,36 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="masterclass.spring.controllers" />
 
+    <context:component-scan base-package="masterclass.spring.persistence" />
+    
+    <bean id="bookService" class="masterclass.spring.service.BookServiceImpl"/>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+	    <property name="url" value="jdbc:hsqldb:hsql://localhost/spitter/spitter" />
+	    <property name="username" value="sa" />
+	    <property name="password" value="" />
+	    <property name="initialSize" value="5" />
+	    <property name="maxActive" value="10" />
+    </bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="masterclass.spring.domain" />
+		 <property name="hibernateProperties">
+			  <value>
+				hibernate.dialect=org.hibernate.dialect.HSQLDialect
+			  </value>
+    </property>
+
+	</bean>
+    
+    <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    
+    <!-- To add exception translation to a template-less Hibernate DAO -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    
 </beans>
