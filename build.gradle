@@ -32,7 +32,20 @@ dependencies {
 }
 
 
+
 task copyToLib(type: Copy) {
     into "lib"
     from configurations.runtime
 }
+
+
+task (startDatabase, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.hsqldb.Server'
+    args = ["-database.0","file:$buildDir/classes/main"]
+   
+} 
+
+//jettyRun.dependsOn startDatabase
+
+

@@ -11,6 +11,7 @@ import masterclass.spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
+@Transactional
 @RequestMapping("/books")
 public class BookController {
 
@@ -52,12 +54,14 @@ public class BookController {
 	public @ResponseBody
 	Book createBook(Book book, BindingResult result,
 			HttpServletResponse response) throws BindException {
-		System.out.println("POST a book");
+		System.out.println("POST a book" + book);
 		if (result.hasErrors()) {
 			throw new BindException(result);
 		}
 		// Do save here
-		response.setHeader("Location", "/books/" + book.getId());
+		Book createdBook = bookService.createBook(book);
+		
+		response.setHeader("Location", "/books/" + createdBook.getId());
 		return book;
 
 	}
