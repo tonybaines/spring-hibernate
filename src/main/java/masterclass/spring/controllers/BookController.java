@@ -28,8 +28,7 @@ public class BookController {
 	private BookService bookService;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = { "Accept=application/json" })
-	public @ResponseBody
-	Book getBook(@PathVariable("id") long id) {
+	public @ResponseBody Book getBook(@PathVariable("id") long id) {
 		System.out.println("GET a book");
 		Book book = new Book();
 		book.setTitle("Design Patterns");
@@ -50,8 +49,7 @@ public class BookController {
 
 	@RequestMapping(method = RequestMethod.POST, headers = { "Accept=application/json", "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
-	public @ResponseBody
-	Book createBook(HttpServletResponse response, @Valid @RequestBody Book book) throws BindException {
+	public @ResponseBody Book createBook(HttpServletResponse response, @Valid @RequestBody Book book) throws BindException {
 		System.out.println("POST a book" + book);
 
 
