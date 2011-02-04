@@ -7,7 +7,7 @@ sourceCompatibility=1.6
 
 springVersion='3.0.5.RELEASE'
 hibernateVersion='3.3.2.GA'
-httpPort=myHttpPort.toInteger() ?: 8080
+if (hasProperty('jettyHttpPort')) httpPort=myHttpPort.toInteger()
 
 repositories {
     flatDir name: 'localRepository', dirs: 'lib'
