@@ -1,8 +1,5 @@
 package masterclass.spring.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -41,11 +38,8 @@ public class BookController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = { "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void putBook(@PathVariable("id") long id, @Valid @RequestBody Book book, BindingResult result) throws BindException {
+	public void putBook(@PathVariable("id") long id, @Valid @RequestBody Book book) throws BindException {
 		System.out.println("PUT a book " + book);
-    if (result.hasErrors()) {
-      throw new BindException(result);
-    }
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -57,12 +51,9 @@ public class BookController {
 	@RequestMapping(method = RequestMethod.POST, headers = { "Accept=application/json", "Content-Type=application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
-	Book createBook(@Valid @RequestBody Book book, BindingResult result,
-			HttpServletResponse response) throws BindException {
+	Book createBook(HttpServletResponse response, @Valid @RequestBody Book book) throws BindException {
 		System.out.println("POST a book" + book);
-		if (result.hasErrors()) {
-			throw new BindException(result);
-		}
+
 
 		Book createdBook = bookService.createBook(book);
 		
