@@ -17,7 +17,13 @@
     <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
     
     <bean id="bookService" class="masterclass.spring.service.BookServiceImpl"/>
-    <bean id="bookDao" class="masterclass.spring.persistence.BookStoreDAOImpl"/>
+    <bean id="basketService" class="masterclass.spring.service.BasketServiceImpl"/>
+    <bean id="authorService" class="masterclass.spring.service.AuthorServiceImpl"/>
+    <bean id="bookDao" class="masterclass.spring.persistence.BookDAOImpl"/>
+    <bean id="basketDao" class="masterclass.spring.persistence.BasketDAOImpl"/>
+    <bean id="authorDao" class="masterclass.spring.persistence.AuthorDAOImpl"/>
+    
+    <bean id="bootstrapper" class="masterclass.spring.BootStrapper"/>
     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 	    <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
