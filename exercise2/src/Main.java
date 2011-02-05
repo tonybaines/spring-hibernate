@@ -8,13 +8,13 @@ import masterclass.spring.example.developer.*;
 
 public class Main {
   public static void main(String[] args) {
-    Developer developer1 = new JavaProgrammer();
-    Deliverable deliverable1 = new SimpleDeliverable(developer1);
+    Developer javaDeveloper = new JavaProgrammer();
+    Deliverable javaDeliverable = new SimpleDeliverable(javaDeveloper);
     List<Deliverable> deliverables = new ArrayList<Deliverable>();
-    deliverables.add(deliverable1);
-    Project project1 = new Project(deliverables);
+    deliverables.add(javaDeliverable);
+    Project simpleProject = new Project(deliverables);
     
-    System.out.println(project1.deliver());
+    System.out.println(simpleProject.deliver());
   }
 
 }
