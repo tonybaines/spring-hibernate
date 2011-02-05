@@ -13,6 +13,10 @@ public class Main {
     List<Deliverable> deliverables = new ArrayList<Deliverable>();
     deliverables.add(javaDeliverable);
     Project simpleProject = new Project(deliverables);
+
+    //
+    // TODO: Introduce a ProjectBuilder so that the next line works
+    // Project simpleProject = new ProjectBuilder().getSimpleProject();
     
     System.out.println(simpleProject.deliver());
   }
