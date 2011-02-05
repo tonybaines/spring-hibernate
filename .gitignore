@@ -3,6 +3,7 @@ build.gradle~
 .classpath
 .gradle/
 lib
+bin
 .project
 .settings/
 .springBeans
