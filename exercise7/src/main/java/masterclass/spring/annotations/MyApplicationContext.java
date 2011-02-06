@@ -15,27 +15,6 @@ public class MyApplicationContext {
     return new Interior(cupHolder(), cdPlayer());
   }
 
-  private CdPlayer cdPlayer() {
-    return new CdPlayer();
-  }
-
-  private CupHolder cupHolder() {
-    return new CupHolder();
-  }
-
-  @Bean public Body body() {
-    return new Body();
-  }
-
-  @Bean public Engine engine() {
-    return new Engine();
-  }
-
-  @Bean public Chassis chassis() {
-    return new Chassis(wheel(), wheel(), wheel(), wheel());
-  }
-
-  @Bean @Scope("prototype") public Wheel wheel() {
-    return new Wheel();
-  }
+  // TODO: Fill in the remaining definitions
+  //       Again, remember to make Wheel a prototype
 }
