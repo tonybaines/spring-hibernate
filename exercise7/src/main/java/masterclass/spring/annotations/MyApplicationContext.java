@@ -2,6 +2,7 @@ package masterclass.spring.annotations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 
 @Configuration
@@ -34,7 +35,7 @@ public class MyApplicationContext {
     return new Chassis(wheel(), wheel(), wheel(), wheel());
   }
 
-  @Bean public Wheel wheel() {
+  @Bean @Scope("prototype") public Wheel wheel() {
     return new Wheel();
   }
 }
