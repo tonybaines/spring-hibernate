@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean name="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
+        <constructor-arg index="0" ref="javaDeliverable" />
+    </bean>
+    <bean name="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
+        <constructor-arg index="0" ref="javaDeveloper1"/>
+    </bean>
+        
+        
+    <bean name="complexJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
+        <constructor-arg index="0">
+		    <bean class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
+		        <constructor-arg index="0">
+			        <list>
+		               <ref bean="javaDeveloper1"/>
+		               <ref bean="javaDeveloper2"/>
+			        </list>
+		        </constructor-arg>
+		    </bean>
+	    </constructor-arg>
+    </bean>
+    
+        
+    <bean name="complexMultiTechnologyProject" class="masterclass.spring.example.project.Project" scope="prototype">
+        <constructor-arg index="0" ref="complexMultiTechnologyDeliverable" />
+    </bean>
+    <bean name="complexMultiTechnologyDeliverable" class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
+        <constructor-arg index="0">
+            <list>
+               <ref bean="javaDeveloper1"/>
+               <ref bean="javaDeveloper2"/>
+               <ref bean="perlDeveloper"/>
+               <ref bean="basicDeveloper"/>
+               <ref bean="roomfulOfMonkeys"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- Our developers -->    
+    <bean name="javaDeveloper1" class="masterclass.spring.example.developer.JavaDeveloper"/>
+    <bean name="javaDeveloper2" class="masterclass.spring.example.developer.JavaDeveloper"/>
+    <bean name="perlDeveloper" class="masterclass.spring.example.developer.PerlDeveloper"/>
+    <bean name="basicDeveloper" class="masterclass.spring.example.developer.BASICDeveloper"/>
+    <bean name="roomfulOfMonkeys" class="masterclass.spring.example.developer.RoomfulOfMonkeys"/>
+
+</beans>
