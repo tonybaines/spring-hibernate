@@ -6,7 +6,9 @@ import masterclass.spring.example.deliverable.Deliverable;
 
 
 public class Project {
-  private final List<Deliverable> deliverables;
+  private List<Deliverable> deliverables;
+  
+  protected Project() {} // Necessary when CGLIB AOP proxies are used (i.e. when no interface is available)
 
   public Project(List<Deliverable> deliverables) {
     this.deliverables = deliverables;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <bean name="developerLogging" class="masterclass.spring.example.aop.DeveloperLogging" />
+	<aop:config>
+		<aop:aspect ref="developerLogging">
+			<aop:pointcut id="code" expression="execution(* *.deliverCode(..))" />
+			<aop:before pointcut-ref="code" method="logBeforeStart" />
+			<aop:after pointcut-ref="code" method="logWhenDone" />
+			<aop:around pointcut-ref="code" method="timeTracker"/>
+		</aop:aspect>
+	</aop:config>
+
+    <!-- 
+      TODO: Add appropriate logging advice for the deliverables and project
+    -->
+    <!-- 
+    <bean name="projectLogging" class="masterclass.spring.example.aop.ProjectLogging" />
+    <aop:config>
+        <aop:aspect ref="projectLogging">
+            <aop:pointcut id="project" expression="execution(* *.deliver(..))" />
+            <aop:around pointcut-ref="project" method="timeTracker"/>
+        </aop:aspect>
+    </aop:config>
+    -->
+</beans>
