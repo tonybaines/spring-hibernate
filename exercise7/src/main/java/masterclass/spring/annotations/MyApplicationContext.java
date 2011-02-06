@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MyApplicationContext {
-  @Bean public Car getCar(){
+  @Bean public Car car(){
     return new Car(chassis(), engine(), body(), interior());
   }
 
