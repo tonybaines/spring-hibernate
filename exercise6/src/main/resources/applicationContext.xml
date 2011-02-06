@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- Find and autowire any beans in the package masterclass.spring.annotations -->
+    <context:component-scan base-package="masterclass.spring.annotations" />
+    
+    <!-- The scope of a bean can't be specified with annotations (defaults to singleton), so we still need to define prototypes -->
+    <bean name="wheel" class="masterclass.spring.annotations.Wheel" scope="prototype"/>
+
+</beans>
