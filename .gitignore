@@ -1,14 +1,15 @@
+bin
 build
 build.gradle~
 .classpath
 .gradle/
 lib
-bin
 .project
 .settings/
 .springBeans
 spring-hibernate.iml
 spring-hibernate.ipr
 spring-hibernate.iws
+spring-hibernate.zip
 .svn
 svn-prop.tmp~
