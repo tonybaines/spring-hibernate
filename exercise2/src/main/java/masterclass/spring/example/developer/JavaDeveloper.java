@@ -1,6 +1,6 @@
 package masterclass.spring.example.developer;
 
-public class JavaProgrammer implements Developer {
+public class JavaDeveloper implements Developer {
 
   @Override
   public String deliverCode() {

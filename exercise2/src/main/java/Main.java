@@ -8,7 +8,7 @@ import masterclass.spring.example.developer.*;
 
 public class Main {
   public static void main(String[] args) {
-    Developer javaDeveloper = new JavaProgrammer();
+    Developer javaDeveloper = new JavaDeveloper();
     Deliverable javaDeliverable = new SimpleDeliverable(javaDeveloper);
     List<Deliverable> deliverables = new ArrayList<Deliverable>();
     deliverables.add(javaDeliverable);

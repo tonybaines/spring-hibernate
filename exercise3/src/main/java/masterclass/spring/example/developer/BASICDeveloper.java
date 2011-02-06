@@ -1,10 +1,10 @@
 package masterclass.spring.example.developer;
 
-public class PerlProgrammer implements Developer {
+public class BASICDeveloper implements Developer {
 
   @Override
   public String deliverCode() {
-    return "Will this do?: #£$%^!£$%^&*()";
+    return "Lost in a maze of GOTOs all alike";
   }
 
 }

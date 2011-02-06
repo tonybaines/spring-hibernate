@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean name="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
+        <constructor-arg index="0" ref="javaDeliverable" />
+    </bean>
+    
+    <bean name="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
+        <constructor-arg index="0" ref="javaDeveloper"/>
+    </bean>
+    
+    <!-- TODO: Create some more projects and deliverables
+               complexJavaProject, complexMultiTechnologyProject, ...
+               
+         Some useful syntax
+         <list>
+            <ref bean="..." />
+            <ref bean="..." />
+         </list>
+    -->
+
+    <!-- Our developers -->    
+    <bean name="javaDeveloper" class="masterclass.spring.example.developer.JavaDeveloper"/>
+    <bean name="perlDeveloper" class="masterclass.spring.example.developer.PerlDeveloper"/>
+    <bean name="basicDeveloper" class="masterclass.spring.example.developer.BASICDeveloper"/>
+    <bean name="roomfulOfMonkeys" class="masterclass.spring.example.developer.RoomfulOfMonkeys"/>
+
+</beans>
