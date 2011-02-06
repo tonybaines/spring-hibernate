@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+sourceCompatibility=1.6
+
+springVersion='3.0.5.RELEASE'
+
+repositories {
+    flatDir name: 'localRepository', dirs: 'lib'
+    mavenRepo urls: "https://collaborate.bt.com/artefacts/content/groups/public"
+    mavenCentral()
+}
+
+dependencies {
+  compile "org.springframework:spring-context:$springVersion",
+          "cglib:cglib:2.1"
+}
+
+task copyToLib(type: Copy) {
+    into "lib"
+    from configurations.runtime
+}
