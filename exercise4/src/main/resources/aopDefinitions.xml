@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-    <bean name="developerLogging" class="masterclass.spring.example.aop.DeveloperLogging" />
+    <bean id="developerLogging" class="masterclass.spring.example.aop.DeveloperLogging" />
 	<aop:config>
 		<aop:aspect ref="developerLogging">
 			<aop:pointcut id="code" expression="execution(* *.deliverCode(..))" />
@@ -18,7 +18,7 @@
       TODO: Add appropriate logging advice for the deliverables and project
     -->
     <!-- 
-    <bean name="projectLogging" class="masterclass.spring.example.aop.ProjectLogging" />
+    <bean id="projectLogging" class="masterclass.spring.example.aop.ProjectLogging" />
     <aop:config>
         <aop:aspect ref="projectLogging">
             <aop:pointcut id="project" expression="execution(* *.deliver(..))" />

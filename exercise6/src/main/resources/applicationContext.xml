@@ -9,6 +9,6 @@
     <context:component-scan base-package="masterclass.spring.annotations" />
     
     <!-- The scope of a bean can't be specified with annotations (defaults to singleton), so we still need to define prototypes -->
-    <bean name="wheel" class="masterclass.spring.annotations.Wheel" scope="prototype"/>
+    <bean id="wheel" class="masterclass.spring.annotations.Wheel" scope="prototype"/>
 
 </beans>

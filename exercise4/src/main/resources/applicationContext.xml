@@ -5,15 +5,15 @@
 
     <import resource="classpath:aopDefinitions.xml"/>
     
-    <bean name="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
+    <bean id="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
         <constructor-arg index="0" ref="javaDeliverable" />
     </bean>
-    <bean name="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
+    <bean id="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
         <constructor-arg index="0" ref="javaDeveloper1"/>
     </bean>
         
         
-    <bean name="complexJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
+    <bean id="complexJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
         <constructor-arg index="0">
 		    <bean class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
 		        <constructor-arg index="0">
@@ -27,10 +27,10 @@
     </bean>
     
         
-    <bean name="complexMultiTechnologyProject" class="masterclass.spring.example.project.Project" scope="prototype">
+    <bean id="complexMultiTechnologyProject" class="masterclass.spring.example.project.Project" scope="prototype">
         <constructor-arg index="0" ref="complexMultiTechnologyDeliverable" />
     </bean>
-    <bean name="complexMultiTechnologyDeliverable" class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
+    <bean id="complexMultiTechnologyDeliverable" class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
         <constructor-arg index="0">
             <list>
                <ref bean="javaDeveloper1"/>
@@ -43,10 +43,10 @@
     </bean>
 
     <!-- Our developers -->    
-    <bean name="javaDeveloper1" class="masterclass.spring.example.developer.JavaDeveloper"/>
-    <bean name="javaDeveloper2" class="masterclass.spring.example.developer.JavaDeveloper"/>
-    <bean name="perlDeveloper" class="masterclass.spring.example.developer.PerlDeveloper"/>
-    <bean name="basicDeveloper" class="masterclass.spring.example.developer.BASICDeveloper"/>
-    <bean name="roomfulOfMonkeys" class="masterclass.spring.example.developer.RoomfulOfMonkeys"/>
+    <bean id="javaDeveloper1" class="masterclass.spring.example.developer.JavaDeveloper"/>
+    <bean id="javaDeveloper2" class="masterclass.spring.example.developer.JavaDeveloper"/>
+    <bean id="perlDeveloper" class="masterclass.spring.example.developer.PerlDeveloper"/>
+    <bean id="basicDeveloper" class="masterclass.spring.example.developer.BASICDeveloper"/>
+    <bean id="roomfulOfMonkeys" class="masterclass.spring.example.developer.RoomfulOfMonkeys"/>
 
 </beans>

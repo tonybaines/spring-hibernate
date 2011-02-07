@@ -8,8 +8,8 @@
 	default-autowire="constructor">
 
     <!-- N.B. The Spring IDE can't cope with autowire by constructor, so you'll see spurious warnings -->
-    <bean name="car" class="masterclass.spring.autowiring.Car" />
-    <bean name="chassis" class="masterclass.spring.autowiring.Chassis" />
+    <bean id="car" class="masterclass.spring.autowiring.Car" />
+    <bean id="chassis" class="masterclass.spring.autowiring.Chassis" />
 
     <!-- Remember, our car won't work with the same wheel attached four times ... -->
 
