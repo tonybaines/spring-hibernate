@@ -1,6 +1,6 @@
 bin
 build
-build.gradle~
+*~
 .classpath
 .gradle/
 lib
@@ -12,4 +12,4 @@ spring-hibernate.ipr
 spring-hibernate.iws
 spring-hibernate.zip
 .svn
-svn-prop.tmp~
+.metadata

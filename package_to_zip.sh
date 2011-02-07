@@ -1,15 +1,15 @@
 #!/bin/bash
 # Clean up
-gradle clean
+STAGING_DIR=spring-hibernate-exercises
 rm spring-hibernate.zip
-rm -rf spring-hibernate-exercises
-mkdir spring-hibernate-exercises
+rm -rf $STAGING_DIR
+mkdir $STAGING_DIR
 
 # Clean up and prepare the exercises
-for num in 1 2 3 4 5 6 7
+for exercise in $(ls -d exercise?)
 do
-    pushd exercise$num
-    echo "****** Preparing exercise$num ******"
+    pushd $exercise
+    echo "****** Preparing $exercise ******"
     echo ""
     rm -rf bin/
     rm -rf .settings/
@@ -24,7 +24,7 @@ do
     popd
 done
 
-cp -a README exercise1 exercise2 exercise3 exercise4 exercise5 exercise6 exercise7 spring-hibernate-exercises
+cp -a README exercise? $STAGING_DIR
 # Zip the archive
-zip -r spring-hibernate.zip spring-hibernate-exercises
-rm -rf spring-hibernate-exercises
+zip -r spring-hibernate.zip $STAGING_DIR
+rm -rf $STAGING_DIR

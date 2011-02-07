@@ -3,6 +3,7 @@ package masterclass.spring.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.UniqueConstraint;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,24 +15,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "BOOK")
+@Table(name="BOOK",
+	       uniqueConstraints=@UniqueConstraint(columnNames="isbn"))
 public class Book {
 
 	private Integer id;
 
 	@NotNull
 	private String title;
+	
+	@NotNull
+	@Size(min = 13, max = 13)
+	private String isbn;
 
 	private Set<Author> authors = new HashSet<Author>();
 
 	public Book() {
 	}
 
-	public Book(final String title, Set<Author> authors) {
+	public Book(final String title, final Set<Author> authors, final String isbn) {
 		this.title = title;
 		this.authors = authors;
+		this.isbn = isbn;
 	}
 
 	@SequenceGenerator(name = "Book_Gen", sequenceName = "Book_Seq")
@@ -53,6 +61,14 @@ public class Book {
 	
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	@ManyToMany(
