@@ -1,13 +1,9 @@
 apply plugin: 'java'
-apply plugin: 'jetty'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 
 sourceCompatibility=1.6
 
 springVersion='3.0.5.RELEASE'
 hibernateVersion='3.3.2.GA'
-if (hasProperty('jettyHttpPort')) httpPort=jettyHttpPort.toInteger()
 
 repositories {
     flatDir name: 'localRepository', dirs: 'lib'
@@ -33,10 +29,9 @@ dependencies {
 }
 
 
-
 task copyToLib(type: Copy) {
     into "lib"
-    from configurations.runtime
+    from configurations.testRuntime
 }
 
 
