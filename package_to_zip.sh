@@ -1,9 +1,9 @@
 #!/bin/bash
 # Clean up
-STAGING_DIR=spring-hibernate-exercises
+PACKAGE=spring-hibernate-exercises
 rm spring-hibernate.zip
-rm -rf $STAGING_DIR
-mkdir $STAGING_DIR
+rm -rf $PACKAGE
+mkdir $PACKAGE
 
 # Clean up and prepare the exercises
 for exercise in $(ls -d exercise?)
@@ -24,7 +24,7 @@ do
     popd
 done
 
-cp -a README exercise? $STAGING_DIR
+cp -a README exercise? $PACKAGE
 # Zip the archive
-zip -r spring-hibernate.zip $STAGING_DIR
-rm -rf $STAGING_DIR
+zip --exclude *.svn* -r $PACKAGE.zip $PACKAGE
+rm -rf $PACKAGE

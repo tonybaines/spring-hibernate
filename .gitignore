@@ -7,9 +7,6 @@ lib
 .project
 .settings/
 .springBeans
-spring-hibernate.iml
-spring-hibernate.ipr
-spring-hibernate.iws
-spring-hibernate.zip
+spring-hibernate-exercises.zip
 .svn
 .metadata
