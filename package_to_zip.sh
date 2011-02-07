@@ -12,6 +12,7 @@ do
     echo "****** Preparing $exercise ******"
     echo ""
     rm -rf bin/
+    rm -rf build
     rm -rf .settings/
     rm -rf .springBeans/
     
@@ -19,7 +20,6 @@ do
       rm -rf lib
       gradle clean copyToLib
       rm -rf .gradle/
-      rm -rf build
     fi
     popd
 done
