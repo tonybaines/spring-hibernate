@@ -7,27 +7,5 @@ exercise4: AOP
 exercise5: Autowiring
 exercise6: Annotations
 exercise7: Java Config
+exercise8: Hibernate Intgeration
 
-
-Bookstore
-
-Author
-+id
-+name
-+[books]
-
-Book
-+id
-+title
-+author
-+price
-
-Basket
-+id
-+[items]
-+total
-
-Item
-+id
-+basket
-+book
