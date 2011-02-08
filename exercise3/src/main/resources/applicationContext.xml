@@ -4,11 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
-        <constructor-arg index="0" ref="javaDeliverable" />
+        <constructor-arg type="java.util.List">
+			<list>
+				<ref bean="javaDeliverable"/>
+			</list>
+		</constructor-arg>
     </bean>
     
     <bean id="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
-        <constructor-arg index="0" ref="javaDeveloper"/>
+        <constructor-arg type="masterclass.spring.example.developer.Developer" ref="javaDeveloper"/>
     </bean>
     
     <!-- TODO: Create some more projects and deliverables

@@ -6,17 +6,21 @@
     <import resource="classpath:aopDefinitions.xml"/>
     
     <bean id="simpleJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
-        <constructor-arg index="0" ref="javaDeliverable" />
+        <constructor-arg type="java.util.List">
+			<list>
+				<ref bean="javaDeliverable"/>
+			</list>
+		</constructor-arg>
     </bean>
     <bean id="javaDeliverable" class="masterclass.spring.example.deliverable.SimpleDeliverable" scope="prototype">
-        <constructor-arg index="0" ref="javaDeveloper1"/>
+        <constructor-arg type="masterclass.spring.example.developer.Developer" ref="javaDeveloper1"/>
     </bean>
         
         
     <bean id="complexJavaProject" class="masterclass.spring.example.project.Project" scope="prototype">
         <constructor-arg index="0">
 		    <bean class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
-		        <constructor-arg index="0">
+		        <constructor-arg type="java.util.List">
 			        <list>
 		               <ref bean="javaDeveloper1"/>
 		               <ref bean="javaDeveloper2"/>
@@ -28,10 +32,14 @@
     
         
     <bean id="complexMultiTechnologyProject" class="masterclass.spring.example.project.Project" scope="prototype">
-        <constructor-arg index="0" ref="complexMultiTechnologyDeliverable" />
+    <constructor-arg type="java.util.List">
+			<list>
+				<ref bean="complexMultiTechnologyDeliverable"/>
+			</list>
+		</constructor-arg>
     </bean>
     <bean id="complexMultiTechnologyDeliverable" class="masterclass.spring.example.deliverable.ComplexDeliverable" scope="prototype">
-        <constructor-arg index="0">
+        <constructor-arg type="java.util.List">
             <list>
                <ref bean="javaDeveloper1"/>
                <ref bean="javaDeveloper2"/>
