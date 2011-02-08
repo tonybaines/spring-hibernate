@@ -19,18 +19,6 @@
     <!-- Enable the @AspectJ support -->
     <aop:aspectj-autoproxy />
     
-    <!-- Service classes -->
-    <bean id="bookService" class="masterclass.spring.service.BookServiceImpl"/>
-    <bean id="basketService" class="masterclass.spring.service.BasketServiceImpl"/>
-    <bean id="authorService" class="masterclass.spring.service.AuthorServiceImpl"/>
-    <bean id="publisherService" class="masterclass.spring.service.PublisherServiceImpl"/>
-    
-    <!-- DAO classes -->
-    <bean id="bookDao" class="masterclass.spring.persistence.BookDAO"/>
-    <bean id="basketDao" class="masterclass.spring.persistence.BasketDAO"/>
-    <bean id="authorDao" class="masterclass.spring.persistence.AuthorDAO"/>
-    <bean id="publisherDao" class="masterclass.spring.persistence.PublisherDAO"/>
-    
     <!-- Metrics logging -->
     <bean id="metricsLogger" class="masterclass.spring.MetricsLogger" />
     

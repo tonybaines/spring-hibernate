@@ -6,12 +6,11 @@ import java.util.List;
 import masterclass.spring.domain.Author;
 import masterclass.spring.domain.Book;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("authorDAO")
@@ -19,6 +18,7 @@ public class AuthorDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	private HibernateTemplate hibernateTemplate;
 	
 	public Author getAuthor(Integer authorId) {
 		return (Author) sessionFactory.getCurrentSession().get(Author.class, authorId);
@@ -63,10 +63,8 @@ public class AuthorDAO {
 	}
 	
     public List<Author> getAuthorsByNameLike(String firstName, String lastName) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Author.class);
-	    criteria.add( Restrictions.like("firstName", firstName) );
-	    criteria.add( Restrictions.like("lastName", lastName) );
-	    return criteria.list(); 
+		//TODO: Implement this functionality!
+    	return new ArrayList<Author>();
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {

@@ -3,12 +3,14 @@ package masterclass.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import masterclass.spring.domain.Book;
 import masterclass.spring.domain.Publisher;
 import masterclass.spring.persistence.PublisherDAO;
 
+@Service("publisherService")
 public class PublisherServiceImpl implements PublisherService {
 
 	@Autowired

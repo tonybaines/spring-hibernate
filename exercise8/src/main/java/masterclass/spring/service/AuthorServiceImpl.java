@@ -3,12 +3,14 @@ package masterclass.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import masterclass.spring.domain.Author;
 import masterclass.spring.domain.Book;
 import masterclass.spring.persistence.AuthorDAO;
 
+@Service("authorService")
 public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
@@ -46,8 +48,8 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Transactional
-	public List<Author> getAuthorByNameLike(String firstName, String lastName) {
-		return authorDAO.getAuthorsByNameLike(firstName, lastName);
+	public List<Author> getAuthorByNameLike(String firstNameMatcher, String lastNameMatcher) {
+		return authorDAO.getAuthorsByNameLike(firstNameMatcher, lastNameMatcher);
 	}
 
 

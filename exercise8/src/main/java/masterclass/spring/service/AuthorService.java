@@ -17,7 +17,7 @@ public interface AuthorService {
 	
 	public void deleteAuthor(Author author);
 	
-	public List<Author> getAuthorByNameLike(String firstName, String lastName);
+	public List<Author> getAuthorByNameLike(String firstNameMatcher, String lastNameMatcher);
 	
 	public List<Book> getBooksByAuthor(Author author);
 
