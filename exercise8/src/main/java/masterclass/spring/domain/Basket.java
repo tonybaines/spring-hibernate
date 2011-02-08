@@ -19,9 +19,20 @@ import javax.persistence.Table;
 @Table(name="BASKET")
 public class Basket {
 
+
+	@SequenceGenerator(name="Basket_Gen", sequenceName="Basket_Seq")
+	@Id @GeneratedValue(generator="Basket_Gen")
+	@Column(name = "BASKET_ID")
     private Integer id;
 	
-	private  Set<Book> books = new HashSet<Book>();
+    @OneToMany(
+	        targetEntity=Book.class,
+	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinTable(name="BASKET_BOOK",joinColumns={@JoinColumn(name="BASKET_ID")},
+    		inverseJoinColumns={@JoinColumn(name="BOOK_ID")}
+    )
+	private Set<Book> books = new HashSet<Book>();
 	
 	public Basket(){}
 	
@@ -29,9 +40,6 @@ public class Basket {
 		this.books = books;
 	}
 	
-	@SequenceGenerator(name="Basket_Gen", sequenceName="Basket_Seq")
-	@Id @GeneratedValue(generator="Basket_Gen")
-	@Column(name = "BASKET_ID")
 	public Integer getId() {
 		return id;
 	}
@@ -39,13 +47,7 @@ public class Basket {
 	private void setId(Integer id) {
 		this.id = id;
 	}
-
-	@OneToMany(
-	        targetEntity=Book.class,
-	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(name="BASKET_BOOK",joinColumns={@JoinColumn(name="BASKET_ID")},inverseJoinColumns={@JoinColumn(name="BOOK_ID")}
-    )
+	
 	public Set<Book> getBooks() {
 		return books;
 	}

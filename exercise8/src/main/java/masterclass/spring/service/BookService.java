@@ -8,7 +8,7 @@ public interface BookService {
 
 	public List<Book> listAllBooks();
 	
-	public Book getBook(Integer bookId);
+	public Book getBook(String isbn);
 	
 	public Book createBook(Book book);
 	

@@ -10,25 +10,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookDAOImpl  {
+public class BookDAO  {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public BookDAOImpl() {}
+	public BookDAO() {}
 	
-	public List<Book> listBooks() {
-		return (List<Book>)sessionFactory.getCurrentSession().createQuery("from Books")
+	public List<Book> getAll() {
+		return (List<Book>)sessionFactory.getCurrentSession().createQuery("from Book")
 		    .list();
 	}
 	
 	public Book createBook(Book book) {
-		Integer returnId = (Integer) sessionFactory.getCurrentSession().save(book);
-		return getBook(returnId);
+		String isbn = (String) sessionFactory.getCurrentSession().save(book);
+		return getBook(isbn);
 	}
 	
-	public Book getBook(Integer id) {
-		return (Book) sessionFactory.getCurrentSession().get(Book.class, id);
+	public Book getBook(String isbn) {
+		return (Book) sessionFactory.getCurrentSession().get(Book.class, isbn);
 	}
 
 	public void deleteBook(Book book) {

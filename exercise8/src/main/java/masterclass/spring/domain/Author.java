@@ -25,20 +25,26 @@ public class Author {
 	@NotNull
 	private String lastName;
 	
+	@ManyToMany(
+	        targetEntity=Book.class,
+	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinTable(name="AUTHOR_BOOK",joinColumns={@JoinColumn(name="AUTHOR_ID")},inverseJoinColumns={@JoinColumn(name="ISBN")}
+    )
 	private Set<Book> books = new HashSet<Book>();
 	
+	@SequenceGenerator(name="Author_Gen", sequenceName="Author_Seq")
+	@Id @GeneratedValue(generator="Author_Gen")
+	@Column(name = "AUTHOR_ID")
 	private Integer id;
 	
-	public Author(){}
+	public Author() {}
 	
 	public Author(final String firstName, final String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 	
-	@SequenceGenerator(name="Author_Gen", sequenceName="Author_Seq")
-	@Id @GeneratedValue(generator="Author_Gen")
-	@Column(name = "AUTHOR_ID")
 	public Integer getId() {
 		return id;
 	}
@@ -47,13 +53,6 @@ public class Author {
 		this.id = id;
 	}
 
-	
-	@ManyToMany(
-	        targetEntity=Book.class,
-	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(name="AUTHOR_BOOK",joinColumns={@JoinColumn(name="AUTHOR_ID")},inverseJoinColumns={@JoinColumn(name="BOOK_ID")}
-    )
 	public Set<Book> getBooks() {
 		return books;
 	}

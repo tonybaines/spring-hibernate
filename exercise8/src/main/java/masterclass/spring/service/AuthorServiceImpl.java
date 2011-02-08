@@ -7,17 +7,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import masterclass.spring.domain.Author;
 import masterclass.spring.domain.Book;
-import masterclass.spring.persistence.AuthorDAOImpl;
+import masterclass.spring.persistence.AuthorDAO;
 
 public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
-	private AuthorDAOImpl authorDAO;
+	private AuthorDAO authorDAO;
 	
 	
 	@Transactional
 	public Author getAuthor(Integer authorId) {
 		return authorDAO.getAuthor(authorId);
+	}
+	
+	@Transactional
+	public List<Author> getAll() {
+		return authorDAO.getAll();
 	}
 	
 	@Transactional
@@ -39,5 +44,11 @@ public class AuthorServiceImpl implements AuthorService {
 	public List<Book> getBooksByAuthor(Author author) {
 		return authorDAO.getBookByAuthor(author);
 	}
+
+	@Transactional
+	public List<Author> getAuthorByNameLike(String firstName, String lastName) {
+		return authorDAO.getAuthorsByNameLike(firstName, lastName);
+	}
+
 
 }

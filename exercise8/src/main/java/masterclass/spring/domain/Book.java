@@ -3,17 +3,16 @@ package masterclass.spring.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.UniqueConstraint;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,42 +21,44 @@ import javax.validation.constraints.Size;
 	       uniqueConstraints=@UniqueConstraint(columnNames="isbn"))
 public class Book {
 
-	private Integer id;
-
+	@Id
+	@NotNull
+	@Size(min = 13, max = 13)
+	@Column(name = "ISBN", unique = true, nullable = false, length = 13)
+	private String isbn;
+	
 	@NotNull
 	private String title;
 	
-	@NotNull
-	@Size(min = 13, max = 13)
-	private String isbn;
+	@ManyToOne
+    @JoinColumn(name="publisher_fk")
+	private Publisher publisher;
 
+	@ManyToMany(
+	        targetEntity=Author.class,
+	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinTable(name="AUTHOR_BOOK",joinColumns={@JoinColumn(name="ISBN")},
+    		inverseJoinColumns={@JoinColumn(name="AUTHOR_ID")}
+    )
 	private Set<Author> authors = new HashSet<Author>();
 
-	public Book() {
+	public Book(){}
+	
+	public Book(final String title, final Set<Author> authors, final String isbn)  {
+		this(title, authors, isbn, null);
 	}
 
-	public Book(final String title, final Set<Author> authors, final String isbn) {
+	public Book(final String title, final Set<Author> authors, final String isbn, final Publisher publisher) {
 		this.title = title;
 		this.authors = authors;
 		this.isbn = isbn;
-	}
-
-	@SequenceGenerator(name = "Book_Gen", sequenceName = "Book_Seq")
-	@Id
-	@GeneratedValue(generator = "Book_Gen")
-	@Column(name = "BOOK_ID")
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+		this.publisher = publisher;
 	}
 
 	public String getTitle() {
 		return title;
 	}
-
 	
 	public void setTitle(String title) {
 		this.title = title;
@@ -71,12 +72,7 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	@ManyToMany(
-	        targetEntity=Author.class,
-	        cascade={CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(name="AUTHOR_BOOK",joinColumns={@JoinColumn(name="BOOK_ID")},inverseJoinColumns={@JoinColumn(name="AUTHOR_ID")}
-    )
+	
 	public Set<Author> getAuthors() {
 		return authors;
 	}
@@ -84,10 +80,18 @@ public class Book {
 	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
 	}
+	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
 
 	@Override
 	public String toString() {
-		return "[Book: " + "ID: " + this.id + ", Title: " + this.title
+		return "[Book: " + "ID: " + this.isbn + ", Title: " + this.title
 				+ "]";
 	}
 
@@ -95,11 +99,12 @@ public class Book {
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
-		if (!(o instanceof Book))
+		if (!(o instanceof Book)) {
 			return false;
+		}
+			
 		Book book = (Book) o;
-		if (title != null ? !title.equals(book.title)
-				: book.getTitle() != null) {
+		if (isbn != null ? !isbn.equals(book.getIsbn()): book.getIsbn() != null) {
 			return false;
 		} else {
 			return true;
@@ -108,7 +113,7 @@ public class Book {
 
 	@Override
 	public int hashCode() {
-		return title != null ? title.hashCode() : 0;
+		return isbn != null ? isbn.hashCode() : 0;
 	}
 
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import masterclass.spring.domain.Basket;
 
-public class BasketDAOImpl {
+public class BasketDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

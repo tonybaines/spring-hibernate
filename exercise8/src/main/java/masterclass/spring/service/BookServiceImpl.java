@@ -3,7 +3,7 @@ package masterclass.spring.service;
 import java.util.List;
 
 import masterclass.spring.domain.Book;
-import masterclass.spring.persistence.BookDAOImpl;
+import masterclass.spring.persistence.BookDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookServiceImpl implements BookService {
 
 	@Autowired
-	private BookDAOImpl bookDao;
+	private BookDAO bookDao;
 	
 	
 	@Transactional
@@ -20,8 +20,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Transactional
-	public Book getBook(Integer id) {
-		return bookDao.getBook(id);
+	public Book getBook(String isbn) {
+		return bookDao.getBook(isbn);
 	}
 
 	@Transactional
@@ -41,7 +41,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> listAllBooks() {
-		return bookDao.listBooks();
+		return bookDao.getAll();
 	}
 
 }
