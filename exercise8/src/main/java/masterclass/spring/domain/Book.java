@@ -16,6 +16,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+//TODO: Exercise1 - Add a new 'description' property
+//TODO: Exercise1 - Add a validation constraint of a max size of 255 to the new description property. This can be tested in @BookTest
+
 @Entity
 @Table(name="BOOK",
 	       uniqueConstraints=@UniqueConstraint(columnNames="isbn"))

@@ -44,13 +44,17 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="masterclass.spring.domain" />
-		 <property name="hibernateProperties">
+		<property name="hibernateProperties">
 		 	<props>
 		 	    <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 		 	    <prop key="show_sql">true</prop>
 		 	    <prop key="current_session_context_class">thread</prop>
 		 	    <prop key="hibernate.hbm2ddl.auto">update</prop>
 		 	    <prop key="hibernate.generate_statistics">true</prop>
+		 	    <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</prop>
+			    <prop key="hibernate.cache.use_query_cache">true</prop>
+			    <prop key="hibernate.cache.use_second_level_cache">true</prop>
+			    <prop key="net.sf.ehcache.configurationResourceName">/ehcache.xml</prop>
 		 	</props>
     	</property>
 	</bean>

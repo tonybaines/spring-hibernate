@@ -43,8 +43,5 @@ public class AuthorTest {
 		List<Author> authors = authorDAO.getAll();
 		assertEquals(3, authors.size());
 	}
-	
-	//TODO: Write a test for finding an Author based on name like....
-	
 
 }

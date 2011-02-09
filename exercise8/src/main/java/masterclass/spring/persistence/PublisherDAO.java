@@ -1,11 +1,11 @@
 package masterclass.spring.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import masterclass.spring.domain.Book;
 import masterclass.spring.domain.Publisher;
 
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,11 +35,8 @@ public class PublisherDAO {
 	}
 
 	public List<Book> getBooksByPublisher(Publisher publisher) {
-		Query criteria = sessionFactory.getCurrentSession().
-			createQuery("from Book book where publisher_fk = :pubfk")
-			.setParameter("pubfk", publisher.getId());
-		return (List<Book>)criteria.list();
-
+		//TODO: Exercise4 - Write a test in @PublisherTest and implement this method!
+		return new ArrayList<Book>();
 	}
 	
 }

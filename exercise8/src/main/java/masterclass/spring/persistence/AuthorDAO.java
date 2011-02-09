@@ -10,7 +10,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("authorDAO")
@@ -18,13 +17,13 @@ public class AuthorDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	private HibernateTemplate hibernateTemplate;
 	
 	public Author getAuthor(Integer authorId) {
 		return (Author) sessionFactory.getCurrentSession().get(Author.class, authorId);
 	}
 	
 	public List<Author> getAll() {
+		//TODO: Exercise3 - Write a test in @AuthorTest and modify this to return in ascending order by lastName
 		return (List<Author>)sessionFactory.getCurrentSession().createQuery("from Author")
 	    .list();
 	}
@@ -63,7 +62,8 @@ public class AuthorDAO {
 	}
 	
     public List<Author> getAuthorsByNameLike(String firstName, String lastName) {
-		//TODO: Implement this functionality!
+		//TODO: Exercise2 - Write a test in @AuthorTest, and implement code here to return
+    	//an author based on firstname/lastname wildcard matches.
     	return new ArrayList<Author>();
 	}
 

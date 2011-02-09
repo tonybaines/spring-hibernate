@@ -126,4 +126,5 @@ public class BookTest {
 
         assertEquals(0, constraintViolations.size());
     }
+
 }
